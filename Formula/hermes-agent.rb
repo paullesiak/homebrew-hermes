@@ -350,9 +350,9 @@ class HermesAgent < Formula
 
       (bin/exe).write_env_script(
         libexec/"bin"/exe,
-        HERMES_BUNDLED_SKILLS: pkgshare/"skills",
+        HERMES_BUNDLED_SKILLS:  pkgshare/"skills",
         HERMES_OPTIONAL_SKILLS: pkgshare/"optional-skills",
-        HERMES_MANAGED: "homebrew"
+        HERMES_MANAGED:         "homebrew",
       )
     end
   end
@@ -383,7 +383,7 @@ class HermesAgent < Formula
       assert tui_entry.is_file(), tui_entry
     PY
 
-    hermes_home = Pathname(ENV.fetch("HOME"))/".hermes"
+    hermes_home = Pathname(Dir.home)/".hermes"
     %w[cron sessions logs memories].each { |subdir| mkdir_p hermes_home/subdir }
 
     assert_match "No MCP servers configured", shell_output("#{bin}/hermes mcp list")
