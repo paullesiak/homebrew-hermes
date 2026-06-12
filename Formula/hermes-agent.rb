@@ -374,7 +374,7 @@ class HermesAgent < Formula
           "markdown",
           "ptyprocess",
           "simple_term_menu",
-          "agent_client_protocol",
+          "acp",
       ]
       missing = [name for name in required if importlib.util.find_spec(name) is None]
       assert not missing, missing
