@@ -383,6 +383,9 @@ class HermesAgent < Formula
       assert tui_entry.is_file(), tui_entry
     PY
 
+    hermes_home = Pathname(ENV.fetch("HOME"))/".hermes"
+    %w[cron sessions logs memories].each { |subdir| mkdir_p hermes_home/subdir }
+
     assert_match "No MCP servers configured", shell_output("#{bin}/hermes mcp list")
   end
 end
